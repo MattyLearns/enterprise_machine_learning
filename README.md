@@ -5,16 +5,19 @@ This file contains instructions on executing the commands to run object detectio
 The steps are given below.
 
 1. Command to build docker file for the object detection web app with the name detector-app.
+
 sudo docker build -t detector-app .
 
 2. Command to create netwrok binding and run Tensorflow server with GPU support.
+
 sudo docker run --gpus all -p 8500:8500 --name detector --mount type=bind,source=/home/msc1/Desktop/Labs/Semester_2/7147COMP/coursework/saved_model,target=/models/detector -e MODEL_NAME=detector -t tensorflow/serving:latest-gpu
 
-3. Command to run web app directly, open another terminal and go to FlaskObjectDetection 
-directory. Run the following command.
+3. Command to run web app directly, open another terminal and go to FlaskObjectDetection directory. Run the following command.
+
 python app.py
 
 4. Command to run the web app docker image created in step 1.
+
 sudo docker run -p 127.0.0.1:5000:5000 detector-app
 
 Some screenshots from the webapp is given below.
