@@ -1,0 +1,125 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Detection Web App</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0
+  /css/bootstrap.min.css" integrity="sha384-
+  Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin=
+  "anonymous"> 
+    <link rel="stylesheet" href="{{url_for('static', filename='css_master.css')}}">
+    <script src="https://code.jquery.com/jquery-
+  3.2.1.slim.min.js" integrity="sha384-
+  KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin=
+  "anonymous"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/pop
+  per.min.js" integrity="sha384-
+  ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin=
+  "anonymous"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.mi
+  n.js" integrity="sha384-
+  JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin=
+  "anonymous"></script>
+
+</head>
+<body>
+    <!-- 
+        This is the main webpage of the object detection website. This shows a welcome note and
+        tells what the website is about. It gives user the option to upload image on which 
+        detection can be performed.
+     -->
+    <div class="container">
+        <div class="header-center">
+            <h2>Welcome to the Object Detection Web App</h2>
+            <p>
+                Thanks for visiting the site
+            </p>
+        </div>
+        <div>
+            <p>
+                What is this site for?      
+            </p>
+        </div>
+        <div>
+            <p>
+                This is a web app for a Deep Learning
+                Object Detection model. It can classify 90 
+                different classes of common objects. The algorithm
+                Faster-RCNN has been trained using TensorFlow 
+                Object Detection API. PLease upload an image below
+                to see the results.
+            </p>
+        </div>
+    </div>
+
+    <!-- 
+        This part lets user upload image to perform detection.
+     -->
+    <div class="container">
+        <div class="header">
+            <h3 class="text-muted">Upload Image</h3>
+        </div>
+        <hr>
+        <div>
+            <form action="upload" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <input type="file" name="file" id="inputFile1"><br><br>
+                        <input type="submit" value="upload">
+                    </div>
+                    <div class="col-lg-8">
+                        <img id="imagen"><br>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- 
+        This section lets user to click on the link to be redirected to the 
+        donation page.
+     -->
+    <h3>Donate this website</h3>
+    <p>
+        Do you like the work I do.
+        <a href="{{url_for('donate')}}">Please click here to donate.</a>
+    </p>
+    <!-- 
+        This is the login section for the user to login with email and password. 
+        User can also write comments here. 
+     -->
+    <h3>Log In</h3>
+    <div class="green"> Please log in to save your blog post</div>
+    <p></p>
+    <label for="email">Email:</label>
+    <input type="email" class="green-border" value="">
+    <label for="pass">Password:</label>
+    <input type="password" class="green-border" value="">
+    <input type="submit" value="Log In" class="green-border">
+
+    <p></p>
+    <div>Section for comments</div>
+    <textarea name="comment" id="" cols="50" rows="12"></textarea>
+    
+</body>
+
+<script>
+    function init() {
+        var inputFile = document.getElementById('inputFile1');
+        inputFile.addEventListener('change', mostrarImagen, false);
+    }
+    function mostrarImagen(event) {
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function (event) {
+            var img = document.getElementById('imagen');
+            img.src = event.target.result;
+            img.width = 500;
+            img.height = 500;
+        }
+        reader.readAsDataURL(file);
+    }
+    window.addEventListener('load', init, false);
+</script>
+</html>

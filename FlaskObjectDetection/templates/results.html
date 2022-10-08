@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Results</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='css_master.css')}}">
+    </head>
+    <body>
+        <!-- 
+            This is the results page. Once the user uploads image in the website 
+            and clicks on the upload button. It brings the user to this page. This page shows
+            the detected image with bounding boxes, the file name, the classes along with 
+            its accuracy, and the original image. 
+        -->
+        <h2>Here are your results!</h2>
+        <h3>Inferenced image:</h3>
+        <img src="{{url_for('static', filename='uploads/'+filename)}}" 
+            width='800' height="600" alt="">
+        {% block content %}
+        <h3>File name: {{filename}}</h3>
+        <h3>Predictions: {{dataframe | safe}}</h3>
+        {% endblock %}
+        <p></p>
+        <h3>Original image:</h3>
+        <img src="{{url_for('static', filename='originals/'+filename)}}" 
+            width='800' height="600" alt="">
+    </body>
+</html>

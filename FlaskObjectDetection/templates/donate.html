@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Donation</title>
+        <link rel="stylesheet" href="{{url_for('static', filename='css_master.css')}}">
+    </head>
+    <body>
+        <!-- This is the donation page -->
+        <h2>Donate this website</h2>
+        <h3>Do you like the work I do. Please donate for me to continue this work.</h3>
+        <p>Please Note: First Name, Last Name, Password, and Email are required</p>
+
+        <!-- The form to be filled by the user for donation. -->
+        <form action="https://www.google.com/" method="get">
+            <label for="First Name">First Name:</label>
+            <input type="text" id="First Name" name="First Name" placeholder="First Name">
+
+            <label for="Last Name">Last Name:</label>
+            <input type="text" id="Last Name" name="Last Name" placeholder="Last Name">
+
+            <p></p>
+
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" placeholder="name@email.com">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="password">
+
+            <p>Are yo over the age of 18?</p>
+
+            <label for="yes">Yes:</label>
+            <input type="radio" id="yes" name="age" value="yes">
+
+            <label for="no">No:</label>
+            <input type="radio" id="no" name="age" value="no">
+
+            <p>Do you have a Credit Card or PayPal?</p>
+
+            <select name="sponser" id="">
+                <option value="credit">Credit Card</option>
+                <option value="paypal">PayPal</option>
+            </select>
+
+            <p></p>
+
+            <input type="submit" name="" value="Submit">
+
+        </form>
+    </body>
+</html>
