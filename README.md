@@ -8,7 +8,7 @@ The steps are given below.
 
 sudo docker build -t detector-app .
 
-2. Command to create netwrok binding and run Tensorflow server with GPU support.
+2. Command to create network binding and run Tensorflow server with GPU support.
 
 sudo docker run --gpus all -p 8500:8500 --name detector --mount type=bind,source=/home/msc1/Desktop/Labs/Semester_2/7147COMP/coursework/saved_model,target=/models/detector -e MODEL_NAME=detector -t tensorflow/serving:latest-gpu
 
